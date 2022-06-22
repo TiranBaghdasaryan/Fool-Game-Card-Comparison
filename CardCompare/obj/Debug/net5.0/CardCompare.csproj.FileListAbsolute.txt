@@ -1,0 +1,16 @@
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\bin\Debug\net5.0\CardCompare.exe
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\bin\Debug\net5.0\CardCompare.deps.json
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\bin\Debug\net5.0\CardCompare.runtimeconfig.json
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\bin\Debug\net5.0\CardCompare.runtimeconfig.dev.json
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\bin\Debug\net5.0\CardCompare.dll
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\bin\Debug\net5.0\ref\CardCompare.dll
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\bin\Debug\net5.0\CardCompare.pdb
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\obj\Debug\net5.0\CardCompare.csproj.AssemblyReference.cache
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\obj\Debug\net5.0\CardCompare.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\obj\Debug\net5.0\CardCompare.AssemblyInfoInputs.cache
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\obj\Debug\net5.0\CardCompare.AssemblyInfo.cs
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\obj\Debug\net5.0\CardCompare.csproj.CoreCompileInputs.cache
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\obj\Debug\net5.0\CardCompare.dll
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\obj\Debug\net5.0\ref\CardCompare.dll
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\obj\Debug\net5.0\CardCompare.pdb
+C:\Users\Acer\RiderProjects\CardCompare\CardCompare\obj\Debug\net5.0\CardCompare.genruntimeconfig.cache
