@@ -7,14 +7,18 @@ namespace CardCompare.GameDir
     {
         public CardSuit Suit { get; }
         public CardValue Value { get; }
-        public bool IsTrump { get; }
+        public bool IsTrump { get; set; } 
+
+        public Player CardOwner;
 
 
-        public Card(CardSuit suit, CardValue value, bool isTrump)
+      
+        public Card(CardSuit suit, CardValue value, bool isTrump = default, Player cardOwner = default)
         {
             Suit = suit;
             Value = value;
             IsTrump = isTrump;
+            CardOwner = cardOwner;
         }
 
         public int CompareTo(Card other)

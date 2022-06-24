@@ -7,7 +7,7 @@ namespace CardCompare
     {
         static void Main(string[] args)
         {
-            Game game = new Game(36,2);
+            Game game = new Game(36,6);
             
             Console.ReadKey();
         }

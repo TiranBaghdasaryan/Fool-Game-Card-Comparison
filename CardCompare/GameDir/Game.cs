@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CardCompare.Enums;
 using Random = CardCompare.Common.Random;
 
@@ -10,7 +11,6 @@ namespace CardCompare.GameDir
         public List<Card> Deck { get; private set; }
         public CardSuit TrumpSuit { get; private set; }
 
-
         private Player[] _players;
 
         private Player _attacker;
@@ -18,15 +18,56 @@ namespace CardCompare.GameDir
 
         public Game(int cardsCount, int playersCount)
         {
+            CreateNewGame(cardsCount, playersCount);
+        }
+
+        private void CreateNewGame(int cardsCount, int playersCount)
+        {
             CheckParameters(cardsCount, playersCount);
-            SetPlayersCount(playersCount);
             SetGameTrump();
-            CreateGameDeck(cardsCount);
-            DistributeCards();
+            DistributeCards(playersCount,cardsCount);
             Deck.Sort();
             ConsoleDeck();
             ConsolePlayersCards(playersCount);
+            SetInitialAttackerAndCutter(cardsCount, playersCount);
+
+            Console.WriteLine();
         }
+
+        private void SetInitialAttackerAndCutter(int cardsCount, int playersCount)
+        {
+            Card[] eachPlayerMinCards = new Card[_players.Length];
+            for (int i = 0; i < _players.Length; i++)
+            {
+                IEnumerable<Card> trumps = _players[i].Cards.Where(c => c.IsTrump);
+
+
+                if (trumps.Any(c => c.IsTrump))
+                {
+                    eachPlayerMinCards[i] = _players[i].Cards.Where(c => c.IsTrump).Min();
+                    continue;
+                }
+
+                eachPlayerMinCards[i] = new Card(CardSuit.Spade, CardValue.Joker, true);
+            }
+
+            if (eachPlayerMinCards.All(c => Equals(c.CardOwner, null)))
+            {
+                CreateNewGame(cardsCount, playersCount);
+                return;
+            }
+
+            _attacker = eachPlayerMinCards.Min().CardOwner;
+
+
+            for (int i = 0; i < _players.Length; i++)
+                if (_players[i] == _attacker)
+                {
+                    _cutter = _players[_players.Length - 1 - i];
+                    break;
+                }
+        }
+
 
         private static void CheckParameters(int cardsCount, int playersCount)
         {
@@ -57,19 +98,29 @@ namespace CardCompare.GameDir
             }
         }
 
-        private void DistributeCards()
+        private void DistributeCards(int playersCount, int cardsCount)
         {
+            CreateGameDeck(cardsCount);
+            SetPlayersCount(playersCount);
             for (int i = 0; i < _players.Length; i++)
             {
                 for (int j = 0; j < 6; j++)
                 {
                     int randomNumber = Random.Range(0, Deck.Count - 1);
                     Card randomCard = Deck[randomNumber];
+                    randomCard.CardOwner = _players[i];
                     _players[i].Cards.Add(randomCard);
-                    Deck.Remove(randomCard);
+                    Deck.Remove(Deck[randomNumber]);
                 }
+
                 _players[i].Cards.Sort();
             }
+
+            foreach (var player in _players)
+                if (player.Cards.Any(c => c.IsTrump))
+                    return;
+
+            DistributeCards(playersCount,cardsCount);
         }
 
         private void SetGameTrump() => TrumpSuit = (CardSuit)Random.Range(0, 3);

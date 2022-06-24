@@ -2,6 +2,7 @@
 {
     public enum CardValue
     {
+        
         Six,
         Seven,
         Eight,
@@ -10,6 +11,7 @@
         J,
         Q,
         K,
-        T
+        T,
+        Joker
     }
 }
